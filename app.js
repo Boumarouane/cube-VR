@@ -36,12 +36,12 @@ let init = () => {
     {
         const loader = new THREE.CubeTextureLoader();
         const texture = loader.load([
-            'nebula.jpg',
-            'nebula.jpg',
-            'nebula.jpg',
-            'nebula.jpg',
-            'nebula.jpg',
-            'nebula.jpg',
+            'neb.gif',
+            'neb.gif',
+            'neb.gif',
+            'neb.gif',
+            'neb.gif',
+            'neb.gif',
         ]);
         scene.background = texture;
     }
