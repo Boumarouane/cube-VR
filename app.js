@@ -36,12 +36,12 @@ let init = () => {
     {
         const loader = new THREE.CubeTextureLoader();
         const texture = loader.load([
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
-            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            './nebula.jpg',
+            './nebula.jpg',
+            './nebula.jpg',
+            './nebula.jpg',
+            './nebula.jpg',
+            './nebula.jpg',
         ]);
         scene.background = texture;
     }
