@@ -32,6 +32,19 @@ let init = () => {
 
     // Scene
     scene = new THREE.Scene();
+    // Cube en background
+    {
+        const loader = new THREE.CubeTextureLoader();
+        const texture = loader.load([
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+            'https://threejsfundamentals.org/threejs/resources/images/grid-1024.png',
+        ]);
+        scene.background = texture;
+    }
 
     // Lumière
     {
