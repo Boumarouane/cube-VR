@@ -55,9 +55,25 @@ let init = () => {
         makeInstance(geometry, 0x8844aa, -2),
         makeInstance(geometry, 0xaa8844, 2),
     ];
-
 }
+
+// Fonction de responsivitée
+let resizeRendererToDisplaySize = (renderer) => {
+    let canvas = renderer.domElement;
+    const pixelRatio = window.devicePixelRatio;
+    const width = canvas.clientWidth * pixelRatio | 0;
+    const height = canvas.clientHeight * pixelRatio | 0;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
+    }
+    return needResize;
+}
+
+// Fonction d'animation
 let animate = (time) => {
+
+    // Rotation des cubes
     time *= 0.001;
 
     cubes.forEach((cube, ndx) => {
@@ -67,6 +83,12 @@ let animate = (time) => {
         cube.rotation.y = rot;
     });
 
+    // Vérifie si le canvas doit etre redimensionné
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
     renderer.render(scene, camera);
 
     requestAnimationFrame(animate);
