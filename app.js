@@ -36,12 +36,12 @@ let init = () => {
     {
         const loader = new THREE.CubeTextureLoader();
         const texture = loader.load([
-            'neb.gif',
-            'neb.gif',
-            'neb.gif',
-            'neb.gif',
-            'neb.gif',
-            'neb.gif',
+            'grid.svg',
+            'grid.svg',
+            'grid.svg',
+            'grid.svg',
+            'grid.svg',
+            'grid.svg',
         ]);
         scene.background = texture;
     }
@@ -70,7 +70,7 @@ let init = () => {
         cube.position.x = x;
         // ! Déplacez les cubes vers le haut pour être devant la caméra
         cube.position.y = 1.6;
-        cube.position.z = -2;
+        cube.position.z = -4;
         return cube;
     }
 
