@@ -1,3 +1,8 @@
+import * as THREE from "./three.module.js";
+import {
+    VRButton
+} from "./VRButton.js";
+
 let cubes,
     renderer,
     scene,
@@ -12,6 +17,9 @@ let init = () => {
     renderer = new THREE.WebGLRenderer({
         canvas
     });
+    // ! Activer le support WebXR de three.js et ajouter son bouton VR
+    renderer.xr.enabled = true;
+    document.body.appendChild(VRButton.createButton(renderer));
 
     // Camera
     const fov = 75;
@@ -19,7 +27,8 @@ let init = () => {
     const near = 0.1;
     const far = 5;
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z = 2;
+    // ! optimisation de la camera pour une personne debout
+    camera.position.set(0, 1.6, 0);
 
     // Scene
     scene = new THREE.Scene();
@@ -46,6 +55,9 @@ let init = () => {
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
         cube.position.x = x;
+        // ! Déplacez les cubes vers le haut pour être devant la caméra
+        cube.position.y = 1.6;
+        cube.position.z = -2;
         return cube;
     }
 
@@ -91,8 +103,8 @@ let animate = (time) => {
     }
     renderer.render(scene, camera);
 
-    requestAnimationFrame(animate);
 }
 
 init();
-animate();
+// ! Boucle pour prendre en charge la VR
+renderer.setAnimationLoop(animate);
